@@ -14,6 +14,9 @@ RUN npm install -g tiddlywiki
 VOLUME /var/lib/tiddlywiki
 WORKDIR /var/lib/tiddlywiki
 
+# Add init-and-run script
+ADD init-and-run-wiki /usr/local/bin/init-and-run-wiki
+
 # Meta
-CMD tiddlywiki mywiki --init server && tiddlywiki mywiki --server 8080 $:/core/save/all text/plain text/html user "" 0.0.0.0
+CMD ["/usr/local/bin/init-and-run-wiki"]
 EXPOSE 8080
