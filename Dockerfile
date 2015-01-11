@@ -4,7 +4,8 @@ RUN apt-get update
 
 # Install npm
 RUN apt-get install -y software-properties-common && apt-get clean
-RUN add-apt-repository -y ppa:chris-lea/node.js && apt-get update
+RUN apt-get install -y curl && apt-get clean
+RUN curl -sL https://deb.nodesource.com/setup | bash -
 RUN apt-get install -y nodejs && apt-get clean
 
 # Install tiddlywiki
