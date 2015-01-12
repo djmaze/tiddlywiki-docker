@@ -3,9 +3,9 @@ FROM ubuntu:14.04
 RUN apt-get update
 
 # Install npm
-RUN apt-get install -y software-properties-common curl && apt-get clean
+RUN apt-get install -y software-properties-common curl
 RUN curl -sL https://deb.nodesource.com/setup | bash -
-RUN apt-get install -y nodejs && apt-get clean
+RUN apt-get install -y nodejs
 
 # Install tiddlywiki
 RUN npm install -g tiddlywiki
