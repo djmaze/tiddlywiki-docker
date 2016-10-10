@@ -18,3 +18,7 @@ to lose sight of that, I recommend using a local folder for the volume.
     sudo docker run -d -p 8080:8080 -v $(pwd)/.tiddlywiki:/var/lib/tiddlywiki mazzolino/tiddlywiki
 
 In this example, the folder `$(pwd)/.tiddlywiki` is used for the data.
+
+# Auth
+
+Simply provide the USERNAME and PASSWORD env variables to enable authentication.
