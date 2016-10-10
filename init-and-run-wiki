@@ -5,4 +5,4 @@ if [ ! -d /var/lib/tiddlywiki/mywiki ]; then
   tiddlywiki mywiki --init server
 fi
 
-exec tiddlywiki mywiki --server 8080 $:/core/save/all text/plain text/html user "" 0.0.0.0
+exec tiddlywiki mywiki --server 8080 $:/core/save/all text/plain text/html $USERNAME $PASSWORD 0.0.0.0
