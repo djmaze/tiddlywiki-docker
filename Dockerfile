@@ -1,14 +1,12 @@
 FROM ubuntu:14.04
 
-RUN apt-get update
-
-# Install npm
-RUN apt-get install -y software-properties-common curl
-RUN curl -sL https://deb.nodesource.com/setup | bash -
-RUN apt-get install -y nodejs
-
-# Install tiddlywiki
-RUN npm install -g tiddlywiki
+RUN apt-get update && \
+    apt-get install -y software-properties-common curl && \
+    curl -sL https://deb.nodesource.com/setup | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g tiddlywiki && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Setup wiki volume
 VOLUME /var/lib/tiddlywiki
