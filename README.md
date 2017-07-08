@@ -24,3 +24,8 @@ In this example, the folder `$(pwd)/.tiddlywiki` is used for the data.
 Default auth is `user` / `wiki`
 
 Simply provide the USERNAME and PASSWORD env variables to customise.
+
+# Other settings
+
+If you are in a memory-constrained environment, you can provide the 
+`NODE_MEM` environment variable to specify the memory ceiling (in MB)
