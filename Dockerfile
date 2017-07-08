@@ -1,12 +1,6 @@
-FROM ubuntu:14.04
+FROM node:alpine
 
-RUN apt-get update && \
-    apt-get install -y software-properties-common curl && \
-    curl -sL https://deb.nodesource.com/setup | bash - && \
-    apt-get install -y nodejs && \
-    npm install -g tiddlywiki && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN npm install -g tiddlywiki
 
 # Setup wiki volume
 VOLUME /var/lib/tiddlywiki
