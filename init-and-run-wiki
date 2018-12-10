@@ -19,8 +19,7 @@ fi
 
 # Configure the tiddlywiki to be served on a path if it is given
 WEBHOST_TID=/var/lib/tiddlywiki/mywiki/tiddlers/\$__config_tiddlyweb_host.tid
-if [ -n "${SERVE_URI}" ]
-then
+if [ -n "${SERVE_URI}" ]; then
   cp /tiddlyweb_host_template ${WEBHOST_TID}
   echo '$protocol$//$host$'${SERVE_URI}"/" >> ${WEBHOST_TID}
   echo "tiddlywiki will be served at ${SERVE_URI}"
