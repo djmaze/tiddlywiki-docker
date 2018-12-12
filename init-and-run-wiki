@@ -24,8 +24,7 @@ if [ -n "${SERVE_URI}" ]; then
   echo '$protocol$//$host$'${SERVE_URI}"/" >> ${WEBHOST_TID}
   echo "tiddlywiki will be served at ${SERVE_URI}"
 else
-  if [ -e ${WEBHOST_TID} ]
-  then
+  if [ -e ${WEBHOST_TID} ]; then
     rm ${WEBHOST_TID}
   fi
 fi
