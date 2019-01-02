@@ -12,7 +12,24 @@ fi
 
 if [ ! -d /var/lib/tiddlywiki/mywiki ]; then
   /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --init server
+
+  mkdir /var/lib/tiddlywiki/mywiki/tiddlers
 fi
 
-exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --server 8080 $:/core/save/all text/plain text/html ${USERNAME:-user} ${PASSWORD:-'wiki'} 0.0.0.0
+
+# Configure the tiddlywiki to be served on a path if it is given
+WEBHOST_TID=/var/lib/tiddlywiki/mywiki/tiddlers/\$__config_tiddlyweb_host.tid
+if [ -n "${SERVE_URI}" ]; then
+  cp /tiddlyweb_host_template ${WEBHOST_TID}
+  echo '$protocol$//$host$'${SERVE_URI}"/" >> ${WEBHOST_TID}
+  echo "tiddlywiki will be served at ${SERVE_URI}"
+else
+  if [ -e ${WEBHOST_TID} ]; then
+    rm ${WEBHOST_TID}
+  fi
+fi
+
+# Start the tiddlywiki server
+
+exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --server 8080 $:/core/save/all text/plain text/html ${USERNAME:-user} ${PASSWORD:-'wiki'} 0.0.0.0 ${SERVE_URI}
 

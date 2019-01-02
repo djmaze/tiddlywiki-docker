@@ -29,3 +29,5 @@ Simply provide the USERNAME and PASSWORD env variables to customise.
 
 If you are in a memory-constrained environment, you can provide the 
 `NODE_MEM` environment variable to specify the memory ceiling (in MB)
+
+To serve the tiddlywiki at a [non-root prefix path](https://tiddlywiki.com/static/Using%2520a%2520custom%2520path%2520prefix%2520with%2520the%2520client-server%2520edition.html) set the `SERVE_URI` environment variable: this variable ''must'' start with a forward slash character. The tiddlywiki will be served by the container at http://<IP>/${SERVE_URI} - the container initialization script takes care of setting the required host configuration tiddler.
