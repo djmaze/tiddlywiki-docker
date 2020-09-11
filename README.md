@@ -8,6 +8,14 @@ Forked from
 The Docker image is available at [m0wer/tiddlywiki - Docker
 Hub](https://hub.docker.com/r/m0wer/tiddlywiki).
 
+## Available Docker Images at DockerHub
+
+Image Name       | Tag        | TiddyWiki Version
+-----------------|------------|------------------
+m0wer/tiddlywiki | latest     | 5.1.22
+m0wer/tiddlywiki | v[X]       | [X]
+m0wer/tiddlywiki | test       | ?
+
 ## Prerequisites
 
 * Docker.
@@ -24,7 +32,7 @@ Now TiddlyWiki should be running on
 ## Keeping the data
 
 The container uses a Docker volume to save the wiki data. In order not
-to lose sight of that, I recommend using a local folder for the volume.
+to lose sight of that, I recommend using a local directory for the volume.
 
 ```bash
 docker run -d -p 8080:8080 -v $(pwd)/.tiddlywiki:/var/lib/tiddlywiki m0wer/tiddlywiki
@@ -32,20 +40,21 @@ docker run -d -p 8080:8080 -v $(pwd)/.tiddlywiki:/var/lib/tiddlywiki m0wer/tiddl
 
 In this example, the folder `$(pwd)/.tiddlywiki` is used for the data.
 
-## Auth
+## Authentication
 
-Default auth is `user`:`wiki`.
+Default credentials are `user`:`wiki`.
 
-Simply provide the USERNAME and PASSWORD env variables to customise.
+Simply provide the `USERNAME` and `PASSWORD` environment variables to
+customize.
 
 ## Other settings
+
+### Limit Node.js memory
 
 If you are in a memory-constrained environment, you can provide the
 `NODE_MEM` environment variable to specify the memory ceiling (in MB)
 
-To serve the tiddlywiki at a
-[non-root prefix path](https://tiddlywiki.com/static/Using%2520a%2520custom%2520path%2520prefix%2520with%2520the%2520client-server%2520edition.html)
-set the `SERVE_URI` environment variable: this variable ''must'' start with a
-forward slash character. The tiddlywiki will be served by the container at
-`http://<IP>/${SERVE_URI}` - the container initialization script takes care of
-setting the required host configuration tiddler.
+### Debug
+
+Set the `DEBUG_LEVEL` environment variable to `debug`. For example by passing
+`-e DEBUG_LEVEL=debug` option in `docker run`.
