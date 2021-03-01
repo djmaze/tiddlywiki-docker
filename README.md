@@ -1,3 +1,5 @@
+*:warning: This repository is not maintained anymore. You might want to have a look at [m0wer's fork](https://github.com/m0wer/tiddlywiki-docker).*
+
 Run TiddlyWiki 5 via docker.
 
 ## Prerequisites
