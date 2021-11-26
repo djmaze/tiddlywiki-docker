@@ -42,10 +42,8 @@ In this example, the folder `$(pwd)/.tiddlywiki` is used for the data.
 
 ## Authentication
 
-Default credentials are `user`:`wiki`.
-
-Simply provide the `USERNAME` and `PASSWORD` environment variables to
-customize.
+Authentication is disabled by default. To enable it, simply provide the
+`USERNAME` and `PASSWORD` environment variables.
 
 ## Other settings
 

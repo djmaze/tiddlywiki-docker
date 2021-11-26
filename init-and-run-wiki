@@ -18,5 +18,8 @@ fi
 
 
 # Start the tiddlywiki server
-
-exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --listen host=0.0.0.0 port=8080 username="${USERNAME:-user}" password="${PASSWORD-wiki}" debug-level=${DEBUG_LEVEL-none}
+if [ -z "$USERNAME" ]; then
+    exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --listen host=0.0.0.0 port=8080 debug-level=${DEBUG_LEVEL-none};
+else
+    exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --listen host=0.0.0.0 port=8080 username="$USERNAME" password="${PASSWORD-wiki}" debug-level=${DEBUG_LEVEL-none};
+fi
